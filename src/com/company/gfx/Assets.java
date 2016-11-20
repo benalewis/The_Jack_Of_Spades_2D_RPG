@@ -1,4 +1,4 @@
-package com.company;
+package com.company.gfx;
 
 import java.awt.image.BufferedImage;
 
@@ -15,8 +15,8 @@ public class Assets {
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 
-        player = sheet.crop(width*2,height*2, width, height);
-        water = sheet.crop(width,height, width, height);
+        player = sheet.crop(width*2,0, width, height);
+        water = sheet.crop(width,0, width, height);
         grass = sheet.crop(0,0, width, height);
     }
 }
