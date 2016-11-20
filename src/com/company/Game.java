@@ -4,6 +4,7 @@ import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Ben on 20/11/2016.
@@ -29,6 +30,7 @@ public class Game implements Runnable {
 
     private void init(){
         display = new Display(title, width, height);
+
     }
 
     private void update(){
@@ -43,8 +45,11 @@ public class Game implements Runnable {
         }
 
         g = bs.getDrawGraphics();
-        //Draw Here
 
+        //Clear Screen
+        g.clearRect(0,0, width, height);
+
+        //Draw Here
 
 
         //End Drawing!
