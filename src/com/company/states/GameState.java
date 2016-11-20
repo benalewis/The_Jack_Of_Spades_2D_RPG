@@ -1,5 +1,6 @@
 package com.company.states;
 
+import com.company.Game;
 import com.company.entities.Player;
 import com.company.gfx.Assets;
 
@@ -12,8 +13,9 @@ public class GameState extends State{
 
     private Player player;
 
-    public GameState() {
-        player = new Player(100.0f, 100.0f);
+    public GameState(Game game) {
+        super(game);
+        player = new Player(game, 100, 100);
     }
 
     @Override

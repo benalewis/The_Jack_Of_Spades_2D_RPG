@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.display.Display;
 import com.company.gfx.Assets;
+import com.company.input.KeyManager;
 import com.company.states.GameState;
 import com.company.states.MenuState;
 import com.company.states.SettingsState;
@@ -31,23 +32,31 @@ public class Game implements Runnable {
     private State menuState;
     private State settingsState;
 
+    //-- Input --//
+    private KeyManager keyManager;
+
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
         this.title = title;
+        keyManager = new KeyManager();
             }
 
     private void init(){
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new GameState();
-        menuState = new MenuState();
-        settingsState = new SettingsState();
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        settingsState = new SettingsState(this);
         State.setState(gameState);
     }
 
     private void update(){
+
+        keyManager.tick();
+
         if(State.getState() != null) {
             State.getState().update();
         }
@@ -112,6 +121,10 @@ public class Game implements Runnable {
 
         stop();
 
+    }
+
+    public KeyManager getKeyManager() {
+        return  keyManager;
     }
 
     public synchronized void start() {

@@ -1,5 +1,7 @@
 package com.company.states;
 
+import com.company.Game;
+
 import java.awt.*;
 
 /**
@@ -7,8 +9,8 @@ import java.awt.*;
  */
 public class SettingsState extends State {
 
-    public SettingsState() {
-
+    public SettingsState(Game game) {
+        super(game);
     }
 
     @Override

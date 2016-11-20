@@ -1,5 +1,7 @@
 package com.company.states;
 
+import com.company.Game;
+
 import java.awt.*;
 
 /**
@@ -7,8 +9,8 @@ import java.awt.*;
  */
 public class MenuState extends State {
 
-    public MenuState() {
-
+    public MenuState(Game game) {
+        super(game);
     }
 
     @Override
