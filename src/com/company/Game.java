@@ -22,6 +22,9 @@ public class Game implements Runnable {
     private BufferStrategy bs;
     private Graphics g;
 
+    private BufferedImage test;
+    private SpriteSheet sheet;
+
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
@@ -30,7 +33,8 @@ public class Game implements Runnable {
 
     private void init(){
         display = new Display(title, width, height);
-
+        test = ImageLoader.loadImage("/textures/sheet.png");
+        sheet = new SpriteSheet(test);
     }
 
     private void update(){
@@ -50,8 +54,8 @@ public class Game implements Runnable {
         g.clearRect(0,0, width, height);
 
         //Draw Here
-
-
+        g.drawImage(sheet.crop(3,3,34,34),10,10,null);
+               
         //End Drawing!
         bs.show();
         g.dispose();
